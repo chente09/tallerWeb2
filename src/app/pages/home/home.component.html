@@ -1,0 +1,50 @@
+<div class="container-fluid text-center">
+    <section class="hero">
+        <div class="container">
+            <h1>Smart Technology</h1>
+            <p>En Smart Technology, impulsamos el futuro a través de la tecnología innovadora.</p>
+        </div>
+    </section>
+    <hr>
+    <div class="container">
+        <div class="text-center mb-3 pb-3">
+            <h1>Ofertas del Mes</h1>
+        </div>
+        <div id="carouselOfertas" class="carousel slide carousel-fade" data-bs-ride="true" >
+            <div class="carousel-inner" (click)="onClickProducto()">
+                <div *ngFor="let promo of promos" [class]="promo.id == 1 ? 'carousel-item active' : 'carousel-item'">
+                    <img [src]="promo.imagen" class="d-block w-100" [alt]="promo.name">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselOfertas" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselOfertas" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <br>
+    <hr><br>
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center mb-3 pb-3">
+                <h1>¿Que producto comprarás hoy?</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel">
+                <div *ngFor="let producto of productos" class="carousel-item active">
+                    <h2>{{producto.name}}</h2>
+                    <img [src]="producto.imagen" class="d-block w-100" [alt]="producto.name"
+                        style="border-radius: 10px;">
+                    <h5 *ngIf="producto.stock < 1; else elseTemplate">Agotado</h5>
+                    <ng-template #elseTemplate>
+                        <h5>Disponible</h5>
+                    </ng-template>
+                    <a [routerLink]="['/productos']" class="btn btn-outline-dark">Ver más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

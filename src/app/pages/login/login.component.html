@@ -1,0 +1,41 @@
+<div class="container-fluid d-flex justify-content-center align-items-center background" >
+    <form [formGroup]="form" class=" p-4 rounded shadow-sm formulario" >
+        <div class="mb-4">
+            <label for="email" class="form-label">Correo</label>
+            <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                formControlName="email" 
+                placeholder="Ingresa tu correo"
+                style="border-radius: 10px;">
+            <div class="invalid-feedback text-danger">
+                El correo es obligatorio.
+            </div>
+        </div>
+        <div class="mb-4">
+            <label for="password" class="form-label">ID Usuario</label>
+            <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                formControlName="password" 
+                placeholder="Ingresa tu contraseña"
+                style="border-radius: 10px;">
+            <div class="invalid-feedback text-danger">
+                La contraseña es obligatoria.
+            </div>
+        </div>
+        <div class="d-grid gap-2">
+            <button class="btn btn-outline-primary btn-block" type="button" (click)="onClickRegister()">
+                <i class="bi bi-person-plus"></i> Registrarse
+            </button>
+            <button class="btn btn-outline-success btn-block" type="button" (click)="onClickLogin()">
+                <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+            </button>
+            <button class="btn btn-outline-danger btn-block" type="button" (click)="onClickLoginGoogle()">
+                <i class="bi bi-google"></i> Iniciar Sesión con Google
+            </button>
+        </div>
+    </form>
+</div>

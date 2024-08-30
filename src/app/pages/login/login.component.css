@@ -1,0 +1,14 @@
+.formulario {
+    font-size: 20px;
+    color:#0e3034f5;
+    max-width: 400px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5)
+}
+
+.background {
+    min-height: 100vh; 
+    background-image: url('https://wallpapers.com/images/high/4k-tech-fi904sfb2h6pmfhs.webp'); 
+    background-size: cover; 
+    background-position: center;
+}
