@@ -1,3 +1,4 @@
+/* Estilo para la sección hero */
 .hero {
     background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20201028/pngtree-abstract-technology-background-technical-electric-image_443494.jpg");
     background-size: cover;
@@ -6,4 +7,75 @@
     padding: 100px 0;
     text-align: center;
     border-radius: 10px;
+}
+
+/* Estilos para la sección de productos */
+.card {
+    background-color: #d5d5f1; /* Fondo suave */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    margin: 20px; /* Separación entre tarjetas */
+    padding: 20px; /* Espacio interno */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15); /* Sombra más intensa en hover */
+}
+
+/* Estilo para la imagen del producto */
+.card-img-top {
+    border-radius: 8px;
+    max-height: 200px; /* Limitar la altura de las imágenes */
+    object-fit: cover; /* Ajustar la imagen */
+}
+
+/* Estilo para el título del producto */
+.card-title {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.25rem;
+}
+
+/* Texto del precio */
+.card-text {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+/* Botones de igual tamaño y espaciados */
+.btn {
+    width: 45%; /* Ancho de los botones igual */
+    margin-right: 5%; /* Separación entre los botones */
+    text-align: center;
+}
+
+.btn:last-child {
+    margin-right: 0; /* El último botón no necesita margen derecho */
+}
+
+/* Estilos de los botones con colores */
+.btn-outline-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.btn-outline-info:hover {
+    background-color: #138f99;
+}
+
+.btn-outline-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.btn-outline-success:hover {
+    background-color: #218838;
 }
