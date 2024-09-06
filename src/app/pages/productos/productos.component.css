@@ -11,9 +11,9 @@
 
 /* Estilos para la sección de productos */
 .card {
-    background-color: #d5d5f1; /* Fondo suave */
+    background-color: #f3f3f8; /* Fondo suave */
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
     margin: 20px; /* Separación entre tarjetas */
