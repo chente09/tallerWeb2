@@ -1,26 +1,30 @@
-import { Component } from '@angular/core';
-import { Producto } from '../../utils/producto';
-import * as productoData from '../../../../public/json/productoData.json';
-import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
-import { Path } from '../../utils/path';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common'; // Asegúrate de importar esto
+import { ActivatedRoute } from '@angular/router';
+import { ProductService, Producto } from '../../services/productos/productos.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-producto',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule], // Asegúrate de que CommonModule esté aquí
   templateUrl: './producto.component.html',
-  styleUrl: './producto.component.css'
+  styleUrls: ['./producto.component.css']
 })
-export class ProductoComponent {
-  producto?: Producto;
+export class ProductoComponent implements OnInit {
+  producto$: Observable<Producto> | undefined;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      const id= params.get('id');
-      this.producto=((productoData as any).default as Producto[]).find((producto) => producto.id === Number(id));
-    })
+      const id = params.get('id');
+      if (id) {
+        this.producto$ = this.productService.getProductoById(id);
+      }
+    });
   }
 }

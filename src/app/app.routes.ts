@@ -4,6 +4,7 @@ import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { ProductoComponent } from './pages/producto/producto.component';
 import {ProductosComponent} from "./pages/productos/productos.component";
 import { LoginComponent } from './pages/login/login.component';
+import { CarritoComponent } from './pages/carrito/carrito.component';
 import { Error404Component } from './pages/error404/error404.component';
 
 export const routes: Routes = [
@@ -13,5 +14,6 @@ export const routes: Routes = [
     { path: 'producto/:id', component: ProductoComponent },
     { path: 'productos', component: ProductosComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'carrito', component: CarritoComponent },
     { path: '**', component: Error404Component }
 ];

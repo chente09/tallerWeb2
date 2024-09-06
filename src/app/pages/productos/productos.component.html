@@ -13,11 +13,12 @@
     </div>
     <div class="d-flex flex-wrap justify-content-center">
         <div *ngFor="let producto of productos" class="card m-3" style="width: 18rem;">
-            <img [src]="producto.imagen" class="card-img-top" [alt]="producto.name">
+            <img [src]="producto.photoURL" class="card-img-top" [alt]="producto.nombre">
             <div class="card-body">
-                <h5 class="card-title">{{ producto.name }}</h5>
+                <h5 class="card-title">{{ producto.nombre }}</h5>
                 <p class="card-text">{{ producto.precio | currency }}</p>
-                <a [routerLink]="['/producto', producto.id]" class="btn btn-outline-success">Ver Detalles</a>
+                <a [routerLink]="['/producto', producto.id]" class="btn btn-outline-info">Ver Detalles</a>
+                <a class="btn btn-outline-success" (click)="addToCarrito(producto)">Agregar al carrito</a>
             </div>
         </div>
     </div>

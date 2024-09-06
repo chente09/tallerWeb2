@@ -6,25 +6,30 @@
         </div>
     </section>
 </div>
-<div class="container py-5">
-    
-    <div  class="row">
+
+<div class="container py-5" *ngIf="producto$ | async as producto; else loading">
+    <div class="row">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a routerLink="/productos" routerLinkActive="active" >Productos</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{producto?.name}}</li>
+                <li class="breadcrumb-item"><a routerLink="/productos" routerLinkActive="active">Productos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{producto.nombre}}</li>
             </ol>
         </nav>
         <div class="col-md-6">
-            <img [src]="producto?.imagen" class="img-fluid" [alt]="producto?.name">
+            <img [src]="producto.photoURL" class="img-fluid" [alt]="producto.nombre">
         </div>
         <div class="col-md-6">
-            <h1>{{ producto?.name }}</h1>
-            <p><strong>Precio:</strong> {{ producto?.precio | currency }}</p>
-            <p><strong>Stock:</strong> {{ producto?.stock }}</p>
-            <p><strong>Descripción:</strong> {{ producto?.descripcion }}</p>
+            <h1>{{ producto.nombre }}</h1>
+            <p><strong>Precio:</strong> {{ producto.precio}}</p>
+            <p><strong>Marca:</strong> {{ producto.marca}}</p>
+            <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
             <!-- Botón de Compra -->
             <button class="btn btn-primary mt-3">Comprar</button>
         </div>
     </div>
 </div>
+
+<!-- Mostrar mensaje de carga si el producto no ha sido cargado aún -->
+<ng-template #loading>
+  <p>Cargando producto...</p>
+</ng-template>

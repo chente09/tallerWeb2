@@ -1,0 +1,84 @@
+/* Estilo para cuando el carrito está vacío */
+.empty-cart {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: #777;
+}
+
+/* Contenedor del carrito */
+.cart-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título del carrito */
+.cart-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Elemento del carrito */
+.cart-item {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Nombre del producto */
+.item-name {
+    font-size: 20px;
+    margin: 0;
+    color: #333;
+}
+
+/* Detalles del producto */
+.item-details {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Cantidad del producto */
+.item-quantity {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Contenedor de botones */
+.item-actions {
+    margin-top: 10px;
+}
+
+/* Estilo de los botones */
+.btn {
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
