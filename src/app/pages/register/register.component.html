@@ -1,0 +1,68 @@
+<form (ngSubmit)="onClickRegister()">
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" formControlName="email" placeholder="Ingrese su email" />
+      <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-danger">
+        Por favor, ingrese un email válido.
+      </div>
+    </div>
+  
+    <!-- Password -->
+    <div class="mb-3">
+      <label for="password" class="form-label">Contraseña</label>
+      <input type="password" class="form-control" id="password" formControlName="password" placeholder="Ingrese su contraseña" />
+      <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="text-danger">
+        Por favor, ingrese una contraseña.
+      </div>
+    </div>
+  
+    <!-- Confirm Password -->
+    <div class="mb-3">
+      <label for="checkPassword" class="form-label">Confirmar Contraseña</label>
+      <input type="password" class="form-control" id="checkPassword" formControlName="checkPassword" placeholder="Confirme su contraseña" (ngModelChange)="updateConfirmValidator()" />
+      <div *ngIf="form.get('checkPassword')?.invalid && form.get('checkPassword')?.touched" class="text-danger">
+        Las contraseñas no coinciden.
+      </div>
+    </div>
+  
+    <!-- Nickname -->
+    <div class="mb-3">
+      <label for="nickname" class="form-label">Apodo</label>
+      <input type="text" class="form-control" id="nickname" formControlName="nickname" placeholder="Ingrese su apodo" />
+      <div *ngIf="form.get('nickname')?.invalid && form.get('nickname')?.touched" class="text-danger">
+        Por favor, ingrese un apodo.
+      </div>
+    </div>
+  
+    <!-- Photo URL -->
+    <div class="mb-3">
+      <label for="photoURL" class="form-label">Foto URL</label>
+      <input type="text" class="form-control" id="photoURL" formControlName="photoURL" placeholder="Ingrese la URL de su foto (opcional)" />
+    </div>
+  
+    <!-- Phone Number -->
+    <div class="mb-3">
+      <label for="phoneNumber" class="form-label">Número de Teléfono</label>
+      <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber" placeholder="Ingrese su número de teléfono" />
+      <div *ngIf="form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched" class="text-danger">
+        Por favor, ingrese un número de teléfono válido.
+      </div>
+    </div>
+  
+    <!-- Role -->
+    <div class="mb-3">
+      <label for="role" class="form-label">Rol</label>
+      <select class="form-select" formControlName="role" id="role">
+        <option value="Empleado">Empleado</option>
+        <option value="Administrador">Administrador</option>
+      </select>
+    </div>
+  
+    <!-- Register Button -->
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Registrarse</button>
+      <button type="button" class="btn btn-secondary" (click)="onClickRegisterWithGoogle()">Registrarse con Google</button>
+    </div>
+  </form>
+  
