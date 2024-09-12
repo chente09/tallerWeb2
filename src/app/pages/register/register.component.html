@@ -1,68 +1,39 @@
-<form (ngSubmit)="onClickRegister()">
-    <!-- Email -->
-    <div class="mb-3">
-      <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email" formControlName="email" placeholder="Ingrese su email" />
-      <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-danger">
-        Por favor, ingrese un email válido.
-      </div>
-    </div>
-  
-    <!-- Password -->
-    <div class="mb-3">
-      <label for="password" class="form-label">Contraseña</label>
-      <input type="password" class="form-control" id="password" formControlName="password" placeholder="Ingrese su contraseña" />
-      <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="text-danger">
-        Por favor, ingrese una contraseña.
-      </div>
-    </div>
-  
-    <!-- Confirm Password -->
-    <div class="mb-3">
-      <label for="checkPassword" class="form-label">Confirmar Contraseña</label>
-      <input type="password" class="form-control" id="checkPassword" formControlName="checkPassword" placeholder="Confirme su contraseña" (ngModelChange)="updateConfirmValidator()" />
-      <div *ngIf="form.get('checkPassword')?.invalid && form.get('checkPassword')?.touched" class="text-danger">
-        Las contraseñas no coinciden.
-      </div>
-    </div>
-  
-    <!-- Nickname -->
-    <div class="mb-3">
-      <label for="nickname" class="form-label">Apodo</label>
-      <input type="text" class="form-control" id="nickname" formControlName="nickname" placeholder="Ingrese su apodo" />
-      <div *ngIf="form.get('nickname')?.invalid && form.get('nickname')?.touched" class="text-danger">
-        Por favor, ingrese un apodo.
-      </div>
-    </div>
-  
-    <!-- Photo URL -->
-    <div class="mb-3">
-      <label for="photoURL" class="form-label">Foto URL</label>
-      <input type="text" class="form-control" id="photoURL" formControlName="photoURL" placeholder="Ingrese la URL de su foto (opcional)" />
-    </div>
-  
-    <!-- Phone Number -->
-    <div class="mb-3">
-      <label for="phoneNumber" class="form-label">Número de Teléfono</label>
-      <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber" placeholder="Ingrese su número de teléfono" />
-      <div *ngIf="form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched" class="text-danger">
-        Por favor, ingrese un número de teléfono válido.
-      </div>
-    </div>
-  
-    <!-- Role -->
-    <div class="mb-3">
-      <label for="role" class="form-label">Rol</label>
-      <select class="form-select" formControlName="role" id="role">
-        <option value="Empleado">Empleado</option>
-        <option value="Administrador">Administrador</option>
-      </select>
-    </div>
-  
-    <!-- Register Button -->
-    <div class="mb-3">
-      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Registrarse</button>
-      <button type="button" class="btn btn-secondary" (click)="onClickRegisterWithGoogle()">Registrarse con Google</button>
-    </div>
-  </form>
-  
+<form [formGroup]="form" (ngSubmit)="onClickRegister()">
+  <label for="email">Correo electrónico:</label>
+  <input id="email" formControlName="email" type="email">
+  <div *ngIf="form.controls['email'].invalid && form.controls['email'].touched">
+    <small *ngIf="form.controls['email'].hasError('required')">El correo es obligatorio.</small>
+    <small *ngIf="form.controls['email'].hasError('email')">Correo inválido.</small>
+  </div>
+
+  <label for="password">Contraseña:</label>
+  <input id="password" formControlName="password" type="password">
+  <div *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+    <small *ngIf="form.controls['password'].hasError('required')">La contraseña es obligatoria.</small>
+    <small *ngIf="form.controls['password'].hasError('minlength')">La contraseña debe tener al menos 6 caracteres.</small>
+  </div>
+
+  <label for="checkPassword">Confirmar Contraseña:</label>
+  <input id="checkPassword" formControlName="checkPassword" type="password">
+  <div *ngIf="form.controls['checkPassword'].invalid && form.controls['checkPassword'].touched">
+    <small *ngIf="form.controls['checkPassword'].hasError('required')">Debes confirmar la contraseña.</small>
+    <small *ngIf="form.controls['checkPassword'].hasError('confirm')">Las contraseñas no coinciden.</small>
+  </div>
+
+  <label for="nickname">Nombre de Usuario:</label>
+  <input id="nickname" formControlName="nickname" type="text">
+  <div *ngIf="form.controls['nickname'].invalid && form.controls['nickname'].touched">
+    <small>El apodo es obligatorio.</small>
+  </div>
+
+  <label for="phoneNumber">Número de Teléfono:</label>
+  <input id="phoneNumber" formControlName="phoneNumber" type="text">
+  <div *ngIf="form.controls['phoneNumber'].invalid && form.controls['phoneNumber'].touched">
+    <small *ngIf="form.controls['phoneNumber'].hasError('required')">El número de teléfono es obligatorio.</small>
+    <small *ngIf="form.controls['phoneNumber'].hasError('pattern')">Debe ser un número válido de 10 dígitos.</small>
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Registrar</button>
+</form>
+
+<button (click)="onClickRegisterWithGoogle()">Registrarse con Google</button>

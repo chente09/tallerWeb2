@@ -18,7 +18,7 @@
                 <h5 class="card-title">{{ producto.nombre }}</h5>
                 <p class="card-text">{{ producto.precio | currency }}</p>
                 <a [routerLink]="['/producto', producto.id]" class="btn btn-outline-info">Ver Detalles</a>
-                <a class="btn btn-outline-success" (click)="addToCarrito(producto)">Agregar al carrito</a>
+                <a class="btn" style="background-color: #101C29; color: white;" (click)="addToCarrito(producto)">Agregar al carrito</a>
             </div>
         </div>
     </div>

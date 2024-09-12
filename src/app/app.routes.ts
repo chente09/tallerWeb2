@@ -16,9 +16,9 @@ export const routes: Routes = [
     { path: 'producto/:id', component: ProductoComponent },
     { path: 'productos', component: ProductosComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
     { path: 'carrito', component: CarritoComponent, ...canActivate(() => redirectUnauthorizedTo(['/login'])) },
     { path: '**', component: Error404Component },
-    { path: 'register', component: RegisterComponent },
     { path: '', redirectTo: '/login', pathMatch: 'full' } // Ruta por defecto
 
 

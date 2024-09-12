@@ -19,10 +19,10 @@
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="btn btn-outline-secondary" routerLink="/carrito" >
+                    <a class="btn btn-outline-secondary" routerLink="/carrito">
                         <i class="bi bi-cart"></i> 
                     </a>
-                    <a class="btn btn-outline-secondary" routerLink="/login" *ngIf="!isLogged(); else elseTemplate">
+                    <a class="btn btn-outline-secondary" routerLink="/login" *ngIf="!isLogged(); else elseTemplate" style="margin-left: 10px;">
                         <i class="bi bi-person-circle"></i> <!-- Icono de iniciar sesión -->
                     </a>
                     <ng-template #elseTemplate>
