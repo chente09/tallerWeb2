@@ -12,6 +12,7 @@ import { PaypalService } from '../../services/paypal/paypal.service';
   styleUrl: './carrito.component.css'
 })
 export class CarritoComponent {
+  isLoading = false; 
   carritoItems: CarritoItem[] = [];
   totalCarrito: number = 0;  // Nueva propiedad para almacenar el total
 
@@ -31,7 +32,7 @@ export class CarritoComponent {
   }
 
   pay(): void {
-    
+    this.isLoading = true;
     this.carritoService.getTotalCarrito().subscribe(total => {
       this.paypalService.getAccessToken().subscribe(accessToken => {
         this.paypalService.createWebProfile(accessToken.access_token, `Pago-${Math.random()}`).subscribe(webProfile => {

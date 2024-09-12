@@ -20,7 +20,8 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
-    margin-bottom: 20px; /* Separación entre tarjetas */
+    margin-bottom: 20px;
+    /* Separación entre tarjetas */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -35,7 +36,8 @@
 }
 
 /* Marca y precio, uno arriba del otro */
-.item-brand, .item-price {
+.item-brand,
+.item-price {
     margin: 0;
     font-size: 16px;
     color: #555;
@@ -81,4 +83,19 @@
 
 .btn-danger:hover {
     background-color: #f7051d;
+}
+
+.spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    /* Asegúrate de que el spinner esté sobre otros contenidos */
+}
+
+.spinner-border {
+    width: 5rem;
+    height: 5rem;
+    border-width: 0.5em;
 }
