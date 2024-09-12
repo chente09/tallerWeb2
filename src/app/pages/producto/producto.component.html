@@ -16,7 +16,7 @@
             </ol>
         </nav>
         <div class="col-md-6">
-            <img [src]="producto.photoURL" class="img-fluid" [alt]="producto.nombre">
+            <img [src]="producto.imagen" class="img-fluid" [alt]="producto.nombre">
         </div>
         <div class="col-md-6">
             <h1>{{ producto.nombre }}</h1>
@@ -24,7 +24,7 @@
             <p><strong>Marca:</strong> {{ producto.marca}}</p>
             <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
             <!-- Botón de Compra -->
-            <button class="btn btn-primary mt-3">Comprar</button>
+            <button class="btn btn-primary mt-3" (click)="addToCarrito(producto)">Comprar</button>
         </div>
     </div>
 </div>

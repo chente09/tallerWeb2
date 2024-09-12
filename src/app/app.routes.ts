@@ -6,8 +6,8 @@ import {ProductosComponent} from "./pages/productos/productos.component";
 import { LoginComponent } from './pages/login/login.component';
 import { CarritoComponent } from './pages/carrito/carrito.component';
 import { Error404Component } from './pages/error404/error404.component';
-import { RegisterService } from './services/register/register.service';
 import { RegisterComponent } from './pages/register/register.component';
+import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,7 +16,7 @@ export const routes: Routes = [
     { path: 'producto/:id', component: ProductoComponent },
     { path: 'productos', component: ProductosComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'carrito', component: CarritoComponent },
+    { path: 'carrito', component: CarritoComponent, ...canActivate(() => redirectUnauthorizedTo(['/login'])) },
     { path: '**', component: Error404Component },
     { path: 'register', component: RegisterComponent },
     { path: '', redirectTo: '/login', pathMatch: 'full' } // Ruta por defecto

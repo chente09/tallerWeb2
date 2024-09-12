@@ -14,16 +14,16 @@ import { CarritoService } from '../../services/carrito/carrito.service';
 export class ProductosComponent {
   productos: Producto[] = [];
 
-  constructor(private productService: ProductService, private carritoService: CarritoService ) {}
+  constructor(private productService: ProductService, private carritoService: CarritoService) { }
 
-  ngOnInit(): void {  
+  ngOnInit(): void {
     this.getProductos();
   }
 
-  getProductos(): void{
-    this.productService.getProducto().subscribe(ps=>this.productos=ps);
+  getProductos(): void {
+    this.productService.getProducto().subscribe(ps => this.productos = ps);
   }
- 
+
   addToCarrito(producto: Producto, cantidad: number = 1): void {
     this.carritoService.addToCarrito(producto, cantidad)
       .then(() => {

@@ -1,21 +1,51 @@
-<div *ngIf="carritoItems.length === 0" class="empty-cart">
+<div *ngIf="carritoItems.length === 0" class="empty-cart text-center">
     <p>El carrito está vacío.</p>
 </div>
 
-<div *ngIf="carritoItems.length > 0" class="cart-container">
-    <h2 class="cart-title">Carrito de Compras</h2>
-    <div *ngFor="let item of carritoItems" class="cart-item">
-        <h3 class="item-name">{{ item.producto.nombre }}</h3>
-        <p class="item-details">Marca: {{ item.producto.marca }}</p>
-        <p class="item-details">Precio: {{ item.producto.precio }}</p>
-        <p class="item-quantity">Cantidad: {{ item.cantidad }}</p>
-        <div class="item-actions">
-            <button (click)="increaseQuantity(item.producto.id, item.cantidad)" class="btn btn-primary">
-                Añadir más
-            </button>
-            <button (click)="removeFromCarrito(item.producto.id)" class="btn btn-danger">
-                Eliminar
-            </button>
+<div *ngIf="carritoItems.length > 0" class="cart-container container">
+    <h2 class="cart-title text-center mb-4">Carrito de Compras</h2>
+
+    <!-- Lista de items del carrito -->
+    <div *ngFor="let item of carritoItems" class="cart-item row mb-4 p-3 border rounded shadow-sm align-items-center">
+        <div class="col-md-12">
+            <div class="item-info d-flex align-items-center justify-content-between">
+                <!-- Imagen del producto a la izquierda -->
+                <div class="item-image me-4">
+                    <img src="{{ item.producto.imagen }}" alt="{{ item.producto.nombre }}" class="img-fluid rounded"
+                        style="width: 200px; height: 200px;">
+                </div>
+                <!-- Detalles del producto a la derecha -->
+                <div class="item-details">
+                    <h3 class="item-name">{{ item.producto.nombre }}</h3>
+                    <p class="item-details"><strong>Marca:</strong> {{ item.producto.marca }}</p>
+                    <p class="item-details"><strong>Precio:</strong> {{ item.producto.precio | currency }}</p>
+                    <p class="item-quantity"><strong>Cantidad:</strong> {{ item.cantidad }}</p>
+                    <p class="item-total"><strong>Total:</strong> {{ item.producto.precio * item.cantidad | currency }}
+                    </p>
+                </div>
+
+            </div>
         </div>
+
+
+        <!-- Acciones del producto -->
+        <div class="col-md-4 text-end">
+            <div class="item-actions d-flex justify-content-end">
+                <button (click)="increaseQuantity(item.producto.id, item.cantidad)" class="btn btn-success me-2">
+                    Añadir más
+                </button>
+                <button (click)="removeFromCarrito(item.producto.id)" class="btn btn-danger">
+                    Eliminar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resumen del carrito -->
+    <div class="cart-summary border-top pt-3 mt-4 text-end">
+        <h4>Total del Carrito: {{ totalCarrito | currency }}</h4>
+        <button class="btn btn-primary mt-3" (click)="pay()">
+            Proceder al Pago
+        </button>
     </div>
 </div>

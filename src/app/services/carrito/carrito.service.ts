@@ -8,8 +8,8 @@ import {
   collection,
   collectionData
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import {Producto } from '../productos/productos.service';
+import { Observable, map } from 'rxjs';
+import { Producto } from '../productos/productos.service';
 
 export interface CarritoItem {
   producto: Producto;
@@ -47,5 +47,14 @@ export class CarritoService {
   async updateCantidad(productoId: string, cantidad: number): Promise<void> {
     const carritoDocRef = doc(this.firestore, `carritos/${this.userId}/items/${productoId}`);
     await setDoc(carritoDocRef, { cantidad }, { merge: true });
+  }
+
+  // Método para obtener la suma total del carrito
+  getTotalCarrito(): Observable<number> {
+    return this.getCarrito().pipe(
+      map((items: CarritoItem[]) => 
+        items.reduce((total, item) => total + (item.producto.precio * item.cantidad), 0)
+      )
+    );
   }
 }
