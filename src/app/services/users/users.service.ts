@@ -6,7 +6,8 @@ import {
     signInWithPopup,
     GoogleAuthProvider,
     signOut,
-    User
+    User,
+    deleteUser
   } from '@angular/fire/auth';
 
   export interface LoginInfo {
@@ -28,7 +29,7 @@ export class UsersService {
     return signInWithEmailAndPassword(this.auth, email, password);
   }
 
-  loginWhithGoogle(): Promise<any> {
+  loginWithGoogle(): Promise<any> {
     return signInWithPopup(this.auth, new GoogleAuthProvider());
   }    
 
@@ -38,5 +39,10 @@ export class UsersService {
 
   getCurrentUser(): User | null {
     return this.auth.currentUser;
+  }
+  
+  deleteRegister(uid: string): Promise<any> {
+    let user : User={uid} as User;
+    return deleteUser(user);
   }
 }

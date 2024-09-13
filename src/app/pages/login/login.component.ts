@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { UsersService } from '../../services/users/users.service';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterModule } from '@angular/router';
-import { RegisterService } from '../../services/register/register.service';
+import { RegistersService } from '../../services/register/register.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ import { RegisterService } from '../../services/register/register.service';
 })
 export class LoginComponent {
   form: FormGroup;
-  constructor(private usersService: UsersService, private formBuilder: FormBuilder, private registerService: RegisterService) { 
+  constructor(private usersService: UsersService, private formBuilder: FormBuilder, private registersService: RegistersService) { 
     this.form = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -41,7 +41,7 @@ export class LoginComponent {
   }   
 
   onClickLoginGoogle(): void {
-    this.usersService.loginWhithGoogle()
+    this.usersService.loginWithGoogle()
     .then((response)=>{
       console.log(response);
     })

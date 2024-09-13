@@ -1,22 +1,22 @@
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
-import { RegisterService } from '../../services/register/register.service';
 import { CommonModule } from '@angular/common';
+import { RegistersService } from '../../services/register/register.service';
+import { RouterLink, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
   form: FormGroup;
 
-
-
-  constructor(private registerService: RegisterService, private formBuilder: FormBuilder) {
+  constructor(private registersService: RegistersService, private formBuilder: FormBuilder, private router: Router) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -32,17 +32,18 @@ export class RegisterComponent {
     if (this.form.invalid) return;
     const email = this.form.value.email;
     const password = this.form.value.password;
-    this.registerService.createRegister({email, password},this.form.value)
+    this.registersService.createRegister({email, password},this.form.value)
       .then((response)=>{
         console.log(response);
       })
       .catch((error)=>{
         console.log(error);
       })
+    this.form.reset();
   }
 
   onClickRegisterWithGoogle(): void {
-    this.registerService.createRegisterWithGoogle()
+    this.registersService.createRegisterWithGoogle()
       .then((response)=>{
         console.log(response);
       })
